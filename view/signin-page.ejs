@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ثبت نام</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/img/login.jpg');
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'iransans', sans-serif;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Dark shadow */
+            text-align: right;
+            max-width: 600px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 5px;
+            padding-left: 35px; /* Space for icon */
+            background-color: #292b2c; /* Dark blue background */
+            color: #ffffff; /* White text */
+        }
+
+        .form-control:focus {
+            background-color: #343a40; /* Darker blue background on focus */
+            color: #ffffff; /* White text on focus */
+        }
+
+        .form-control::placeholder {
+            color: rgb(255, 255, 255); /* Placeholder color */
+        }
+
+        .input-icon,
+        .select-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgb(255, 255, 255); /* Icon color */
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #0b9b9d; 
+            color: #ffffff; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background-color: #11787a;
+            color: #ffffff; 
+        }
+
+        .leave-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #dc3545; 
+            color: #ffffff; 
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .leave-btn:hover {
+            background-color: #ad2936;
+            color: #ffffff; 
+        }
+        .input-icon,
+        .select-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgb(255, 255, 255); /* Icon color */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center text-dark mb-4">صفحه ثبت نام</h2>
+        <form action="/add-user" method="get" dir="rtl">
+            <div class="form-group">
+                <i class="fas fa-user input-icon"></i>
+
+                <input type="text" class="form-control" name="userId" placeholder="نام کاربری" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="password" class="form-control" name="password" placeholder="رمز عبور" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="password" class="form-control" name="confirm_password" placeholder="تایید رمز عبور" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="text" class="form-control" name="fullName" placeholder="نام و نام خانوادگی" required>
+                </div>
+            </div>
+            <div class="form-row mt-2">
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="credit_card_type" required>
+                        <option selected>نوع کارت</option>
+                        <option>کارت 1</option>
+                        <option>کارت 2</option>
+                        <option>کارت 3</option>
+                    </select>
+                    <i class="fas fa-caret-down select-icon"></i>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="credit_card_number" placeholder="شماره کارت" minlength="14" maxlength="14" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="date" class="form-control " name="expire_date" placeholder="تاریخ انقضا کارت" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="zip_code" maxlength="11" minlength="11" placeholder="کد پستی" required>
+                </div>
+            </div>
+
+            
+            <div class="form-row">
+                <textarea name="address" class="form-control" id="address" style="resize: none;" rows="5" placeholder="آدرس خود را وارد کنید" required></textarea>
+
+
+            </div>
+            <button type="submit" class="btn register-btn mt-2">ثبت نام</button>
+
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

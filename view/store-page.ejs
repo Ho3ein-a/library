@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>انبار</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'iransans';
+      src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+          url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+      /* Add additional src lines for other font formats if necessary */
+      font-weight: bold;
+      font-style: normal;
+  }
+
+
+  body{
+    font-family: iransans;
+    background-image: url('/img/login.jpg');
+
+  }
+  </style>
+</head>
+
+
+<body dir="rtl">
+  <div class="container mt-5">
+    <h2 style="text-align: center;">انبار</h2>
+    <table class="table mt-3" style="text-align: center;">
+      <thead>
+        <tr>
+            <th></th>
+          <th>کد شابک(ISBN)</th>
+          <th>عنوان کتاب</th>
+          <th>تاریخ ورود به انبار</th>
+          <th>قیمت</th>
+          <th>تعداد</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        
+        <% stocks.forEach(item=>{  %>
+          
+          <% let i=0  %>
+          <tr>
+            <td><img src="/img/checked.png" alt="" width="50" height="50"></td>
+            <td><%= item.ISBN %></td>
+            <td><%= item.title %></td>
+            <td><%= item.date %></td>
+            <td><%= item.price %></td>
+            <td><%= item.totalNumber %></td>
+            
+          </tr>
+          
+          <%})%>
+          
+        
+      </tbody>
+    </table>
+  </div>
+
+
+  
+</body>
+</html>

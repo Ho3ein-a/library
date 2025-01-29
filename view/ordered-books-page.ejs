@@ -1,0 +1,84 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <title>کتاب های سفارش شده</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
+          <style>
+            @font-face {
+              font-family: 'iransans';
+              src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                  url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+              /* Add additional src lines for other font formats if necessary */
+              font-weight: bold;
+              font-style: normal;
+          }
+
+
+          body{
+            font-family: iransans;
+            background-image: url('/img/login.jpg');
+
+          }
+          </style>
+        </head>
+
+
+        <body dir="rtl">
+          <div class="container mt-5">
+            <h2 style="text-align: center;">کتاب های سفارش داده شده</h2>
+            <table class="table mt-3" style="text-align: center;">
+              <thead>
+                <tr>
+                  <th>کد شابک(ISBN)</th>
+                  <th>عنوان کتاب</th>
+                  <th>تاریخ ثبت سفارش</th>
+                  <th>قیمت واحد</th>
+                  <th>تعداد</th>
+                  <th>موجودیت در انبار</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                
+                <% book.forEach(book=>{  %>
+                  
+                  
+                  <tr>
+                    <td><%= book.ISBN %></td>
+                    <td><%= book.title %></td>
+                    <td><%= book.date %></td>
+                    <td><%= book.price %></td>
+                    <td><%= book.number %></td>
+                    
+                    <% if(book.type==1) { %>
+
+                    <td>به انبار اضافه شده است</td>
+                    
+                    <%} else { %>
+
+                      <td>در انبار موجود نیست</td>
+                      <td><a href="/add-to-store?Id=<%= book.Id %>&ISBN=<%= book.ISBN %>&username=<%= username %>" class="btn btn-success">اضافه کردن به انبار</a></td>
+                    
+                      <% } %>
+                   
+                      <%})%>
+
+
+                  
+                  </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        </body>
+        </html>
+        

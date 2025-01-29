@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه مدیر</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/img/login.jpg');
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'iransans', sans-serif;
+            color: #ffffff; /* White text */
+        }
+
+        .container {
+            max-width: 600px; /* Set maximum width */
+            padding: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .insert-book-btn {
+            background-color: #0b9b9d; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-book-btn {
+            background-color: #dc3545; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .book-order-btn {
+            background-color: #ffc107; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .orders-status-btn {
+            background-color: #007bff; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .store-btn {
+            background-color: #28a745; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .create-category-btn {
+            background-color: #6610f2; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .exit-btn {
+            background-color: #6c757d; 
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+
+    
+
+    <div class="container row">
+        <h2>خوش آمدید </h2>
+        <div>
+            <a href="/select-book-ISBN?username=<%= username %>" class="btn insert-book-btn">افزودن کتاب به فروشگاه</a>
+            <a href="/reports?username=<%= username %>" class="btn" style="background-color: darkorange;">گزارشات</a>
+            <a href="/delete-book?username=<%= username %>" class="btn delete-book-btn">فروشگاه</a>
+            <a href="/book-order?username=<%= username %>" class="btn book-order-btn">سفارش کتاب</a>
+            <a href="/orederd-books?username=<%= username %>" class="btn orders-status-btn">وضعیت سفارشات </a>
+            <a href="/store?username=<%= username %>" class="btn store-btn">انبار</a>
+            <a href="/category?username=<%= username %>" class="btn create-category-btn">ایجاد دسته بندی</a>
+            <a href="/start-page" class="btn exit-btn">خروج</a>
+        </div>
+        
+    <div class="row mr-1">
+        <h3>اخطار کمبود موجودی</h3>
+        <div class="col-8">
+            <table class="table" style="color: white;">
+                <% let counter = 1 ; %>
+                <tr>
+                    <th >ردیف</th>
+                    <th class="text-nowrap">کد شابک</th>
+                    <th class="text-nowrap">عنوان کتاب</th>
+                    <th class="text-nowrap">موجودی فعلی در فروشگاه</th>
+                </tr>
+                <% books.forEach(book=>{ %>
+                    <% if(book.number <= book.leastStock ){ %>
+                    <tr>
+                        <td><%= counter %></td>
+                        <td><%= book.ISBN %></td>
+                        <td><%= book.title %></td>
+                        <td><%= book.number %></td>
+                        
+                    </tr>
+                    <%}%>
+                    
+                  <% counter ++ %>  
+                <%})%>
+                
+            </table>
+        </div>
+    </div>
+
+    </div>
+</body>
+ 
+</html>

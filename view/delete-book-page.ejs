@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>حذف کتاب</title>
+    <style>
+          @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body{
+            font-family: iransans;
+            background-image: url('/img/login.jpg');
+
+        }
+    </style>
+</head>
+<body style="background-color: dimgrey;" dir="rtl">
+
+    <div class="container mt-5">
+        <table class="table">
+            <tr>
+                <td>ISBN</td>
+                <td>عنوان کتاب</td>
+                <td>قیمت</td>
+                <td>تعداد</td>
+                <td></td>
+            </tr>
+            <% shopBook.forEach(item => { %>
+            <tr>
+                <td><%= item.ISBN %></td>
+                <td><%= item.title %></td>
+                <td><%= item.price %></td>
+                <td><%= item.number %></td>
+                <% if(item.deleteFlag == 0){%>
+                    <td><a href="/delete-book-completed?Id=<%= item.Id %>&username=<%= username %>" class="btn btn-danger">حذف از فروشگاه</a></td>
+
+                <%} else{%>
+                    <td><a href="/deleted-book-insert?Id=<%= item.Id %>&username=<%= username %>" class="btn btn-success">افزودن به فروشگاه</a></td>
+
+                <%}%>
+            </tr>
+            <% }); %>
+        </table>
+        
+    </div>
+   
+
+</body>
+</html>

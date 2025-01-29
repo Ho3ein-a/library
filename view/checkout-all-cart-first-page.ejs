@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+    <title>پرداخت</title>
+
+    <style>
+                 @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+        body{
+            font-family: iransans;
+            background-image: url('/img/login.jpg');
+
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <div class="container row mt-5">
+
+        <div class="col-6" >
+            <h3>اطلاعات شخص</h3>
+            <table class="table"  style="text-align: center;">
+
+                <tr>
+                    <th>نام</th>
+                    <th>آدرس</th>
+                    <th class="text-nowrap">کد پستی</th>
+                    <th>شماره کارت</th>
+                    
+                </tr>
+
+                <% user.forEach(buy=>{ %>
+
+                    <tr>
+                        <td><%= buy.fullName %></td>
+                        <td class="text-nowrap"><%= buy.address %></td>
+                        <td class="text-nowrap"><%= buy.zipCode %></td>
+                        <td class="text-nowrap"><%= buy.creditCardNumber %></td>
+                    </tr>
+
+                <%})%>
+
+
+            </table>
+        </div>
+
+
+        <div class="col-6">
+            <h3>اطلاعات خرید</h3>
+            <table class="table">
+
+                <tr>
+                    <td>نام کتاب</td>
+                    <td>تعداد</td>
+                    <td>قیمت</td>
+                    
+                </tr>
+
+                <% buys.forEach(buy=>{ %>
+
+                    <tr>
+                        <td><%= buy.title %></td>
+                        <td><%= buy.buynumber %></td>
+                        <td><%= buy.price %></td>
+
+                    </tr>
+
+                <%})%>
+                    
+                <% let array = []; buys.forEach(item => array.push(item.date)); %>
+                <% const buysParam = array.join(','); %>
+
+            </table>
+
+            <div class="row mt-3 d-flex align-buys-center justify-content-center">
+                <p class="col-8">قیمت کل (به علاوه قیمت حمل و نقل)</p>
+                <p class="col-2"><%= totalPrice %></p>
+                <a href="/complete-all-checkout?userId=<%= userId %>&buys=<%= encodeURIComponent(buysParam) %>" class="btn btn-success col-2">پرداخت</a>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+    
+
+</body>
+</html>

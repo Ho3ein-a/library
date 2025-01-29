@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>اضافه کردن کتاب به فروشگاه</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap-dark.min.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'iransans';
+      src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+          url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+      /* Add additional src lines for other font formats if necessary */
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  body {
+    background-image: url('/img/login.jpg');
+
+    font-family: iransans;
+    color: white;
+  }
+</style>
+</head>
+<body dir="rtl">
+  <div class="container mt-5">
+    <h3>کتاب مدنظر خود را برای افزودن به فروشگاه انتخاب نمایید</h3>
+
+    <table class="table text-white " style="text-align: center;" >
+        <tr>
+            <td>ردیف</td>
+            <td>کد شابک (ISBN)</td>
+            <td>عنوان کتاب</td>
+            <td>قیمت خریداری شده کتاب</td>
+            <td>ناشر</td>
+            <td>دسته بندی</td>
+            <td>تاریخ خرید کتاب</td>
+            <td>تعداد موجود در انبار</td>
+            <td></td>
+
+        </tr>
+        <% let counter = 1 %>
+        <% ISBNBooks.forEach(book=>{%>
+            <tr>
+            <td><%= counter %></td>    
+            <td><%= book.ISBN %></td>
+            <td><%= book.title %></td>
+            <td><%= book.price %></td>
+            <td><%= book.publisher %></td>
+            <td><%= book.category %></td>
+            <td><%= book.date %></td>
+            <td><%= book.totalNumber %></td>
+            <td><a href="/add-book?username=<%= username %>&Id=<%= book.Id %>&ISBN=<%= book.ISBN %>" class="btn btn-success">انتخاب</a></td>
+        </tr>
+
+        <% counter ++}) %>
+
+
+    </table>
+
+ 
+  </div>
+
+</body> </html>

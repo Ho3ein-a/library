@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Black.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Black.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/img/library.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'iransans', sans-serif; /* Use the imported font */
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent white */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 255, 0.7); /* Blue shadow */
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: right; /* Align labels to the right */
+        }
+
+        /* Adjusting buttons to have larger font size and margin */
+        .btn-custom {
+            font-size: 1.2em; /* Larger font size */
+            margin: 5px; /* Margin between buttons */
+            transition: box-shadow 0.3s; /* Smooth transition for shadow */
+        }
+
+        .btn-custom:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.7); /* Blue shadow on hover */
+        }
+
+        a{
+            color: white;
+        }
+        a:hover{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6" style=" background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent white */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 255, 0.7); /* Blue shadow */
+            text-align: center;">
+                    <!-- Place buttons instead of radio buttons -->
+                    <a href="/search-user" class="btn btn-secondary btn-custom">جست جو کتاب</a>
+
+                    
+                    <a href="/admin-login" class="btn btn-secondary btn-custom">مدیر</a>
+                    
+                    <a href="/login" class="btn btn-secondary btn-custom">ورود</a>
+
+                    <a href="/sign-in" class="btn btn-primary btn-custom">
+                        ثبت نام
+                    </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

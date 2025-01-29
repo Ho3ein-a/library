@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+    <title>کارت خرید</title>
+
+    <style>
+         @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body{
+            font-family : iransans;
+            background-image: url('/img/login.jpg');
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body dir="rtl">
+
+<div class="container mt-3">
+
+    <div class="row " style="align-items: center;">
+        <h2>سبد خرید شما</h2>
+    </div>
+
+    
+    <table class="table" dir="rtl" style="align-content: center; align-items: center;">
+
+        <tr style="align-items: center;">
+            <th>ردیف</th>
+            <th>نام کتاب</th>
+            <th>تاریخ سفارش</th>
+            <th>تعداد</th>
+            <th>قیمت</th>
+            <td></td>
+            <td></td>
+        
+        </tr>
+            
+        <% let counter = 1 ; %>
+                <% buys.forEach(buy=>{ %>
+                    
+                    <% if(buy.type == 0){%>
+                        <tr style="align-content: start;">
+                        
+                            <td><%= counter%></td>
+                            <td><%= buy.title %></td>
+                            <td><%= buy.date %></td>
+                            <td><%= buy.buynumber %></td>
+                            <td><%= buy.price %></td>
+                            <td><a href="/checkout?Id=<%= buy.Id %>&userId=<%= userId %>&ISBN=<%= buy.ISBN %>&buynumber=<%= buy.buynumber %>&stock=<%= buy.number %>&date=<%= buy.date %>" class="btn btn-success">پرداخت نهایی</a></td>
+                            <td><a href="/delete-cart?Id=<%= buy.Id %>&userId=<%= userId %>&date=<%= buy.date %>" class="btn btn-danger">حذف سفارش</a></td>
+                        
+                        </tr>
+                
+                            
+                    <%}%> 
+                    
+                    <% counter ++ ; %>
+                <%})%>
+            
+            
+    
+
+</table>
+<a href="/checkout-all-cart?userId=<%= userId %>" class="btn btn-primary mt-5">پرداخت کل</a>
+</div>
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>اضافه کردن کتاب به فروشگاه</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap-dark.min.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'iransans';
+      src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+          url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+      /* Add additional src lines for other font formats if necessary */
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  body {
+    background-image: url('/img/login.jpg');
+
+    font-family: iransans;
+  }
+</style>
+</head>
+<body dir="rtl">
+  <div class="container mt-5">
+
+    <table class="table text-white " style="text-align: center;" >
+      <tr>
+          <td>کد شابک (ISBN)</td>
+          <td>عنوان کتاب</td>
+          <td>قیمت خریداری شده کتاب</td>
+          <td>ناشر</td>
+          <td>دسته بندی</td>
+          <td>تاریخ خرید کتاب</td>
+          <td>تعداد موجود در انبار</td>
+
+      </tr>
+      <% bookId.forEach(book=>{%>
+          <tr>
+          <td><%= book.ISBN %></td>
+          <td><%= book.title %></td>
+          <td><%= book.price %></td>
+          <td><%= book.publisher %></td>
+          <td><%= book.category %></td>
+          <td><%= book.date %></td>
+          <td><%= book.totalNumber %></td>
+      </tr>
+
+      <% }) %>
+
+
+  </table>
+
+
+
+    <form action="/add-book-validation" method="get">
+      <div class="row g-3">
+
+
+
+        <div class="col-6">
+
+          <label for="title" class="form-label text-white">عنوان نمایشی کتاب*</label>
+          <input type="text" class="form-control" name="title" id="title"  required>
+
+        </div>
+        <div class="col-6">
+          <label for="number" class="form-label text-white">تعداد*</label>
+          <input type="number" class="form-control" name="number" id="number" required>
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="row g-3">
+
+        <div class="col-6">
+          <label for="price" class="form-label text-white">قیمت *</label>
+          <input type="number" class="form-control" name="price" id="price"  required>
+        </div>
+
+        <div class="col-6">
+          <label for="least_stock" class="form-label text-white">حداقل موجودی*</label>
+          <input type="number" class="form-control" name="least_stock" id="least_stock"  required>
+        </div>
+      </div>
+
+
+
+
+<!-- Hiddens-->
+      <div class="row g-3 " style="display: none;" >
+          <input type="number" class="form-control" name="username" id="username" placeholder="قیمت نمایش داده را به تومان وارد کنید" required value="<%= username %>">
+          <input type="text" name="Id" id="Id" value="<%= bookId[0].Id %>">
+          <input type="text" name="ISBN" id="ISBN" value="<%= bookId[0].ISBN %>">
+
+      </div>
+<!-- Hiddens-->
+
+
+
+
+           
+      <div class="row g-3 mt-3">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">اضافه کردن کتاب به فروشگاه</button>
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+
+</body> </html>

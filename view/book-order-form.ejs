@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>سفارش کتاب</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+    body {
+      background-image: url('/img/login.jpg');
+
+      color: white;
+      font-family: iransans;
+    }
+
+    /* New styles for smaller form and button hover */
+    .container {
+      max-width: 600px;
+    }
+
+    .btn-primary:hover {
+      background-color: #007bff;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body dir="rtl" class="d-flex justify-content-center">
+  <div class="container mt-5 mb-5">
+    <h1 class="text-light text-center mb-4">سفارش کتاب</h1>
+    <form action="/book-order-validation" method="get">
+      
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="isbn" class="form-label">ISBN</label>
+          <input type="text" class="form-control" name="ISBN" id="isbn" placeholder="کد شابک را وارد کنید" required>
+        </div>
+        <div class="col-6">
+          <label for="title" class="form-label">عنوان کتاب</label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="عنوان کتاب را وارد کنید" required>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="date" class="form-label">تاریخ ثبت سفارش</label>
+          <input type="date" class="form-control" name="date" id="date" required>
+        </div>
+        <div class="col-6">
+          <label for="price" class="form-label">قیمت (تومان)</label>
+          <input type="number" step="0.01" class="form-control" name="price" id="price" placeholder="قیمت واحد کتاب را وارد کنید" required>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="bookNumber" class="form-label">تعداد کتاب</label>
+          <input type="number" class="form-control" name="number" id="bookNumber" placeholder="تعداد کتاب را وارد کنید" required>
+        </div>
+        <div class="col-6">
+          <label for="publisher" class="form-label">ناشر</label>
+          <input type="text" class="form-control" name="publisher" id="publisher" placeholder="اطلاعات ناشر را وارد کنید" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="category">دسته بندی را انتخاب کنید</label>
+        <select name="category"  id="category" class="form-control" required>
+          <option value="null"  selected>انتخاب کنید</option>
+          <% categories.forEach(item=>{%>
+
+            <option value="<%=item.title %>"><%=item.title%></option>
+
+
+          <%})%>
+
+        </select>
+      </div>
+    <div class="mb-3" style="display: none;">
+        <label for="username" class="form-label">نام کاربری</label>
+        <input type="text" class="form-control" name="username" id="username" value="<%= username %>"  required>
+      </div>
+    
+
+      <div class="form-check mt-3">
+        <input class="form-check-input" type="checkbox" name="received"  id="received">
+        <label class="form-check-label" for="received">
+          آیا کتاب به انبار رسیده است یا خیر؟
+        </label>
+      </div>
+     
+
+    <div class="d-grid mt-3 col-6 mx-auto">
+      <button type="submit" class="btn btn-primary">ثبت سفارش</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

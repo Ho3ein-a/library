@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارشات</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+            @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+        body{
+            font-family: iransans;
+            background-image: url('/img/login.jpg');
+        }
+
+    </style>
+</head>
+<body dir="rtl">
+    
+    <div class="container mt-5">
+        <div class="row">
+            <a href="/category-book?username=<%= username %>" class="btn btn-success" style="color: white; text-decoration: none;">تعداد کتاب های مربوط به هر دسته بندی در انبار</a>
+        </div>
+
+        <div class="row mt-3">
+            <a href="/best-sales?username=<%= username %>" class="btn btn-success" style="color: white; text-decoration: none;">پر فروش ترین کتاب ها</a>
+        </div>
+
+        <div class="row mt-3">
+            <a href="/most-expensive?username=<%= username %>" class="btn btn-success" style="color: white; text-decoration: none;">لیست گران قیمت ترین کتاب های خریداری شده هر دسته بندی</a>
+        </div>
+
+        <div class="row mt-3">
+            <a href="/category-buyer?username=<%= username %>" class="btn btn-success" style="color: white; text-decoration: none;">تعداد خریداران متمایز هر دسته بندی</a>
+        </div>
+        <div class="row mt-3">
+            <a href="/last-month-sales?username=<%= username %>&date=<%= new Date().toLocaleString() %>" class="btn btn-success" style="color: white; text-decoration: none;"> فروش های ماه جاری</a>
+        </div>
+
+
+        <div class="row mt-3">
+            <a href="/category-month-sales?username=<%= username %>&date=<%= new Date().toLocaleString() %>" class="btn btn-success" style="color: white; text-decoration: none;"> مجموع فروش هر دسته بندی در طول ماه</a>
+        </div>
+
+
+
+
+        <div class="row mt-3">
+            <a href="/page1?username=<%= username %>" class="btn btn-success" style="color: white; text-decoration: none;">تعداد فروش بر اساس سال و ماه و روز</a>
+        </div>
+        <div class="row mt-3">
+            <a href="/page2?username=<%= username %>" class="btn btn-success" style="color: white; text-decoration: none;">صفحه 2</a>
+        </div>
+    </div>
+
+</body>
+</html>

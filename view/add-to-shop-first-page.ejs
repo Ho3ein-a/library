@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>انتخاب کتاب</title>
+    <style>
+        *{
+            direction: rtl;
+        }
+        @font-face {
+                font-family: 'iransans';
+                src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                    url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+                /* Add additional src lines for other font formats if necessary */
+                font-weight: bold;
+                font-style: normal;
+            }
+            body{
+                font-family: iransans;
+            background-image: url('/img/login.jpg');
+            color: white;
+
+            }
+    </style>
+</head>
+
+<body >
+    
+<div class="container mt-5">
+    <h3 class="d-flex justify-content-center">کتاب مدنظر خود را برای افزودن به فروشگاه انتخاب نمایید</h3>
+
+<form action="/select-book" >
+
+    <label for="ISBN" class="d-flex justify-content-start">کد شابک (ISBN)</label>
+    <select class="form-control" name="ISBN" id="ISBN">
+        <option value="0" disabled selected>انتخاب کنید</option>
+        <%ISBNs.forEach(ISBN=>{%>
+            <option value="<%= ISBN %>"><%= ISBN %></option>
+        <%})%>
+    </select>
+    <input type="text" name="username" id="username" value="<%= username %>" style="display: none;">
+    <button type="submit" class="btn btn-primary mt-3 d-flex justify-content-start">انتخاب</button>
+
+</form>
+</div>
+
+</body>
+</html>

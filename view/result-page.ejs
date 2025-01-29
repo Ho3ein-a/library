@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتایج</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/img/login.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: right;
+            font-family: 'iransans', sans-serif;
+        }
+
+        .container {
+            max-width: 600px; /* Set maximum width */
+            background-color: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* White shadow */
+            text-align: center;
+            direction: rtl; /* Right-to-left direction */
+        }
+
+        .book-info {
+            margin-bottom: 20px;
+            color: #ffffff; /* White text */
+        }
+
+        .btn {
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 3px;
+        }
+
+        .leave-btn {
+            background-color: #dc3545; /* Red color */
+            color: #ffffff; /* White text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .leave-btn:hover {
+            background-color: #ad2936; /* Red color */
+            color: #ffffff; /* White text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+        .proceed-btn {
+            background-color: #0b9b9d; 
+            color: #ffffff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .proceed-btn:hover {
+            background-color: #11787a; 
+            color: #ffffff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .new-search-btn {
+            background-color: #3c494a; 
+            color: #ffffff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .new-search-btn:hover {
+            background-color: #323a3a; 
+            color: #ffffff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <% book.forEach(item=>{%>
+
+    
+    <div class="container">
+        <div class="book-info">
+            <h4>نام کتاب: <%= item.title %></h4>
+            <p>شابک: <%= item.ISBN %></p>
+            <p>قیمت:<%= item.price %></p>
+        </div>
+    </div>
+    
+    
+    <%})%>
+
+
+        <a class="btn leave-btn" href="/shop?userId=<%= userId %>&type=<%= type %>"><i class="fas fa-sign-out-alt"></i> خروج</a>
+
+   
+</body>
+ <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <!-- Font Awesome JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</html>

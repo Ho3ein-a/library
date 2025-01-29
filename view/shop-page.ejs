@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>فروشگاه</title>
+
+    <style>
+           @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body{
+            font-family: iransans;
+            background-image: url('/img/login.jpg');
+
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <header >
+
+        <div class="row m-0 "style="display: flex; justify-content: center; align-items:center">
+             
+
+                <div class="col-2">
+                    <a href="/start-page" class="btn btn-danger"style="display: flex; justify-content: center;">خروج</a>
+                </div>
+
+                 <!-- search form -->
+                <div class="col-6" >
+                    <form action="/result-page" method="get" class="row">
+                        <div class="row m-3 w-100" >
+        
+                        <div class="col-6">
+                            
+                        <input type="text" name="title" id="title" class="form-control" placeholder="عنوان کتاب مدنظر را  وارد کنید">
+                        <input type="text" name="userId" id="userId" class="form-control" value="<%= userId %>" hidden>
+        
+                        </div>
+                        <div class="col-6 d-flex justify-content-start">
+                            <button type="submit" class="btn btn-danger">جست جو</button>
+        
+                        </div>
+                    </div>
+        
+                    </form>
+        
+                </div>
+
+                <div class="col-2">
+                        <% if(type == 0) {%>
+
+                            <a href="/sign-in" class="btn btn-primary"style="display: flex; justify-content: center;">عضویت</a>
+                        <%} else {%>
+
+                    
+                        <a href="/boughts?userId=<%= userId %>" class="btn btn-primary"style="display: flex; justify-content: center;"> خرید های شما</a>
+
+                        <%}%>
+                    </div>
+
+                <div class="col-2">
+                    
+
+                
+                <a href="/cart?userId=<%= userId %>" class="btn btn-primary"style="display: flex; justify-content: center;">سبد خرید</a>
+
+                
+                </div>
+
+
+            
+
+
+        </div>
+
+    </header>
+
+
+
+
+
+
+    <main>
+
+            
+         <div class="container mt-5">
+
+            
+
+            <div class="row display-flex">
+             
+
+             <% books.forEach(book=>{ %>
+
+                
+                <div class="card col-4 gap-3" style="width: 18rem;">
+                    <img src="/img/book.jpg" class="card-img-top" alt="book">
+                    <div class="card-body">
+                        <div class="row " style="display: flex; justify-content: center;">
+                            <h5 class="card-title"><%= book.title %> </h5>
+
+                        </div>
+
+                      <div class="row">
+                        
+                        <p class="card-text col-3"><%= book.price %></p>
+                        <p class="card-text col-9" style="display: flex; justify-content: start;">تومان</p>
+
+                      </div>
+
+
+                      <div class="row">
+                        <% if(book.number==0 || book.deleteFlag==1 ){ %>
+                            
+                        <p class="card-text col-3">ناموجود</p>
+                         <% } else {%>
+                        <p class="card-text col-3">موجودی</p>
+
+                        <p class="card-text col-9" style="display: flex; justify-content: start;"><%= book.number %></p>
+
+                            <form action='/add-to-cart'>
+
+                                
+                                <div class="row mb-2">
+                                
+                                
+                                <!--Hiddens-->
+                                
+                                <input type="text" name="ISBN" value="<%= book.ISBN %>" hidden>
+                                <input type="text" name="title" value="<%= book.title %>" hidden>
+                                <input type="text" name="price" value="<%= book.price %>" hidden>
+                                <input type="text" name="userId" value="<%= userId %>" hidden> 
+                                <input type="text" name="Id" value="<%= book.Id %>" hidden> 
+                                
+                                <!--Hiddens-->
+                                
+
+                                <label for="number">تعداد</label>
+                                <input type="number" id="number" class="form form-control w-25" step="1" name="number" min="1" value="1" >
+                            
+                                </div>
+                            <button type="submit" class="btn btn-primary" onClick="window.location.reload()">افزودن به سبد خرید</button>
+                           
+                            </form>   
+                         <% } %>   
+                      </div>
+
+                    </div>
+                  </div>    
+
+              <% }) %>     
+            </div>
+
+         </div>   
+
+    </main>
+    
+</body>
+</html>

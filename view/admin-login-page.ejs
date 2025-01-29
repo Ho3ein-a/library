@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود مدیر</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'iransans';
+            src: url('../font/Woff2/IRANSansXFaNum-Light.woff2') format('woff2'),
+                url('../font/Woff/IRANSansXFaNum-Light.woff') format('woff');
+            /* Add additional src lines for other font formats if necessary */
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/img/login.jpg');
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'iransans', sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+            text-align: right;
+            max-width: 300px; /* Set maximum width */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff; /* Blue button */
+            color: #ffffff; /* White text */
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+            color: white;
+        }
+
+        .form-control {
+            background-color: #e9ecef; /* Light grey background */
+            color: #495057; /* Dark grey text */
+            border: none;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <div class="container">
+        <h2 class="text-right mb-4">ورود مدیر</h2>
+        <form action="/admin-auth" method="get">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="نام کاربری" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="رمز عبور" required>
+            </div>
+            <button type="submit" class="btn btn-login">ورود</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+
+</html>
